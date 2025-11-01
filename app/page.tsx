@@ -1,65 +1,65 @@
+'use client';
+import { useRef } from "react";
 import Image from "next/image";
+import Lanyard from "./components/Lanyard/Lanyard";
+import Dither from "./components/Dither/Dither";
+import RotatingText from "./components/RotatingText/RotatingText";
+import TextType from "./components/TextType/TextType";
+import VariableProximity from "./components/VariableProximity/VariableProximity";
+import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
+import About from "./components/About/About";
 
 export default function Home() {
+  const containerRef = useRef(null);
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+    <div className="relative min-h-screen">
+      <div className="relative z-10">
+        <div className="grid grid-cols-12 min-h-[calc(100vh-4rem)]">
+          <div className="col-span-6 flex flex-col items-center justify-center" ref={containerRef} style={{position: 'relative'}}>
+            <div className="text-white text-7xl font-bold font-poppins mb-4">
+              <TextType
+                text={["Muhamad Razzy Muflih"]}
+                typingSpeed={100}
+                pauseDuration={3000}
+                showCursor={true}
+                cursorCharacter="_"
+              />
+            </div>
+            <div className="flex items-center text-6xl font-bold font-poppins">
+              <span className="mr-4 text-white">Saya</span>
+              <RotatingText
+                texts={['Student', 'Web Developer', 'Enginering', 'Fullstack Developer']}
+                mainClassName="bg-[#5682B1] text-white px-2 py-1 rounded-lg overflow-hidden"
+                staggerFrom={"last"}
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "-120%" }}
+                staggerDuration={0.025}
+                transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                rotationInterval={2000}
+              />
+            </div>
+            <div className="text-white text-lg font-poppins mt-4 max-w-lg text-center">
+              <VariableProximity
+                label={"I am a dedicated Full-Stack Developer skilled in building scalable and dynamic web applications using PHP, JavaScript, and Node.js from crafting intuitive front-end interfaces to developing powerful back-end systems. I’m deeply passionate about exploring all areas of programming, including web development, AI, and other emerging technologies."}
+                className={'variable-proximity-demo'}
+                fromFontVariationSettings={'"wght" 400, "opsz" 9'}
+                toFontVariationSettings={'"wght" 1000, "opsz" 40'}
+                containerRef={containerRef}
+                radius={50}
+                falloff={'linear'}
+              />
+            </div>
+          </div>
+          <div className="col-span-6 flex items-center justify-center bg-transparent">
+            <Lanyard position={[2, 0, 20]} gravity={[0, -40, 0]} />
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
     </div>
+    <ScrollVelocity texts={["MUHAMMAD RAZZY MUFLIH", "MUHAMMAD RAZZY MUFLIH"]} />
+    <About />
+    </main>
   );
 }
