@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${robotoFlex.variable} antialiased bg-[#121212]`}
+        className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${robotoFlex.variable} antialiased bg-[#000000]`}
       >
         <Navbar />
         <main className="pt-16">{children}</main>

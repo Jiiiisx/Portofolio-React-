@@ -2,19 +2,32 @@
 import { useRef } from "react";
 import Image from "next/image";
 import Lanyard from "./components/Lanyard/Lanyard";
-import Dither from "./components/Dither/Dither";
 import RotatingText from "./components/RotatingText/RotatingText";
 import TextType from "./components/TextType/TextType";
 import VariableProximity from "./components/VariableProximity/VariableProximity";
 import ScrollVelocity from "./components/ScrollVelocity/ScrollVelocity";
 import About from "./components/About/About";
+import About2 from "./components/About/About2"
+import LogoLoop from './components/LogoLoop/LogoLoop';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiGithub, SiDocker, SiVercel } from 'react-icons/si';
+import Project from "./components/Project/Project";
 
 export default function Home() {
   const containerRef = useRef(null);
+
+  const techLogos = [
+    { node: <SiReact />, title: 'React', href: 'https://react.dev' },
+    { node: <SiNextdotjs />, title: 'Next.js', href: 'https://nextjs.org' },
+    { node: <SiTypescript />, title: 'TypeScript', href: 'https://www.typescriptlang.org' },
+    { node: <SiTailwindcss />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
+    { node: <SiGithub />, title: 'GitHub', href: 'https://github.com' },
+    { node: <SiDocker />, title: 'Docker', href: 'https://www.docker.com/' },
+    { node: <SiVercel />, title: 'Vercel', href: 'https://vercel.com' }
+  ];
+
   return (
     <main>
-    <div className="relative min-h-screen">
-      <div className="relative z-10">
+    <div className="relative z-10">
         <div className="grid grid-cols-12 min-h-[calc(100vh-4rem)]">
           <div className="col-span-6 flex flex-col items-center justify-center" ref={containerRef} style={{position: 'relative'}}>
             <div className="text-white text-7xl font-bold font-poppins mb-4">
@@ -40,26 +53,32 @@ export default function Home() {
                 rotationInterval={2000}
               />
             </div>
-            <div className="text-white text-lg font-poppins mt-4 max-w-lg text-center">
-              <VariableProximity
-                label={"I am a dedicated Full-Stack Developer skilled in building scalable and dynamic web applications using PHP, JavaScript, and Node.js from crafting intuitive front-end interfaces to developing powerful back-end systems. I’m deeply passionate about exploring all areas of programming, including web development, AI, and other emerging technologies."}
-                className={'variable-proximity-demo'}
-                fromFontVariationSettings={'"wght" 400, "opsz" 9'}
-                toFontVariationSettings={'"wght" 1000, "opsz" 40'}
-                containerRef={containerRef}
-                radius={50}
-                falloff={'linear'}
-              />
-            </div>
           </div>
           <div className="col-span-6 flex items-center justify-center bg-transparent">
             <Lanyard position={[2, 0, 20]} gravity={[0, -40, 0]} />
           </div>
         </div>
       </div>
-    </div>
-    <ScrollVelocity texts={["MUHAMMAD RAZZY MUFLIH", "MUHAMMAD RAZZY MUFLIH"]} />
+    <ScrollVelocity texts={["MUHAMAD RAZZY MUFLIH", "MUHAMAD RAZZY MUFLIH"]} />
     <About />
+    <About2 />
+    <section className="py-2 bg-[#5682B1]">
+      <div className="w-full">
+        <LogoLoop
+          logos={techLogos}
+          speed={100}
+          direction="left"
+          logoHeight={60}
+          gap={48}
+          pauseOnHover
+          scaleOnHover
+          fadeOut
+          fadeOutColor="#5682B1"
+          ariaLabel="Technology partners"
+        />
+      </div>
+    </section>
+    <Project />
     </main>
   );
 }

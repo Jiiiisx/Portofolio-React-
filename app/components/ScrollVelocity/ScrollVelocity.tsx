@@ -154,7 +154,7 @@ export const ScrollVelocity: React.FC<ScrollVelocityProps> = ({
   }
 
   return (
-    <section>
+    <section className="bg-[#5682B1]">
       {texts.map((text: string, index: number) => (
         <VelocityText
           key={index}
