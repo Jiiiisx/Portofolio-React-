@@ -1,6 +1,7 @@
 import TiltedCard from '../TiltedCard/TiltedCard';
 import AnimatedContent from '../AnimatedContent/AnimatedContent'
 import ScrollFloat from '../ScrollFloat/ScrollFloat';
+import PixelCard from '../PixelCard/PixelCard';
 
 export default function About() {
   return (
@@ -38,13 +39,19 @@ export default function About() {
                 captionText="This Is Me"
                 containerHeight="350px"
                 containerWidth="350px"
-                imageHeight="700px"
-                imageWidth="550px"
+                imageHeight="600px"
+                imageWidth="450px"
                 rotateAmplitude={15}
                 scaleOnHover={1.3}
                 showMobileWarning={false}
                 showTooltip={true}
                 displayOverlayContent={true}
+                imageClassName="grayscale"
+                overlayContent={
+                  <div style={{ width: '450px', height: '600px' }}>
+                    <PixelCard variant="blue" className="bg-transparent border-none w-full h-full" />
+                  </div>
+                }
               />
             </div>
           </AnimatedContent>

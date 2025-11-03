@@ -13,6 +13,18 @@ const config: Config = {
         mono: ['var(--font-geist-mono)'],
         poppins: ['var(--font-poppins)'],
       },
+      translate: {
+        '101': '101%',
+      },
+      keyframes: {
+        marquee: {
+          'from': { transform: 'translateX(0%)' },
+          'to': { transform: 'translateX(-50%)' }
+        }
+      },
+      animation: {
+        marquee: 'marquee 15s linear infinite'
+      }
     },
   },
   plugins: [],
